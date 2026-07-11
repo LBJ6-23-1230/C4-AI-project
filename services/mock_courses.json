@@ -1,0 +1,14 @@
+{
+    "courseId":"c001",
+    "courseName":"数据结构",
+    "exam":{
+        "date":"2026-07-20",
+        "daysLeft":5
+    },
+    "priority":"高",
+    "recentStatus":
+    {
+        "studyHours":2,
+        "status":"近期复习不足"
+    }
+}
