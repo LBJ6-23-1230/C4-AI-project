@@ -7,7 +7,11 @@ const pageData: DemoPage = learningFlowPages[1];
 @Component
 struct StudySuggestion {
   private openNext(): void {
-    router.pushUrl({ url: pageData.nextUrl });
+    try {
+      router.pushUrl({ url: pageData.nextUrl });
+    } catch (error) {
+      console.error(`Navigation failed: ${JSON.stringify(error)}`);
+    }
   }
 
   @Builder
