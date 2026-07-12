@@ -1,3 +1,4 @@
+
 def generateStudySuggestions(user,course):
     score = 0
 
@@ -26,6 +27,7 @@ def generateStudySuggestions(user,course):
     return {
     "course":course["courseName"],
     "task":"正常复习",
+    "reason":"近期复习状态良好，无明显薄弱知识点",
     "duration":"30分钟",
     "priority":"中"
     }
@@ -55,7 +57,7 @@ def analyzeWrongQuestion(imageID):
             "knowledge":[],
             "wrongType":"未知",
             "reason":"未知",
-            "suggestions":"请上传正确的题目图片",
+            "suggestions":["请上传正确的题目图片"],
             "Tag":[]
         }
         
@@ -96,7 +98,7 @@ def getOverlapScore(userTimes,candidateTimes):
                 
     if maxOverlap>=60:
         return {
-            "score":20,
+            "score":15,
             "Start":formatTime(OverlapStart),
             "End":formatTime(OverlapEnd),
             "duration":maxOverlap
