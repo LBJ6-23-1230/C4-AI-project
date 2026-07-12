@@ -1,7 +1,32 @@
 import router from '@ohos.router';
+import { mockCandidates, mockCurrentUser } from '../data/MockData';
 import { learningFlowPages, DemoCard, DemoPage } from '../models/LearningFlowData';
+import { PartnerMatch as GeneratedPartnerMatch } from '../models/AgentModels';
+import { LocalAgentService } from '../services/LocalAgentService';
 
 const pageData: DemoPage = learningFlowPages[5];
+const generatedPartner: GeneratedPartnerMatch | null =
+  LocalAgentService.matchBestPartner(mockCurrentUser, mockCandidates);
+const generatedStudyTime: string =
+  generatedPartner !== null && generatedPartner.studyTime !== null ? generatedPartner.studyTime : '今晚';
+const servicePlanCard: DemoCard = generatedPartner === null ? {
+  title: '服务计划：等待匹配',
+  description: '暂无可生成协同计划的学习搭子。',
+  badge: '待匹配',
+  bullets: [
+    '补充候选人数据后可重新生成',
+    '也可以先完成个人复习任务'
+  ]
+} : {
+  title: `服务计划：${generatedStudyTime} 协同复习`,
+  description: `与 ${generatedPartner.matchName} 进行 ${generatedPartner.duration} 分钟协同学习。`,
+  badge: '已生成',
+  bullets: [
+    `匹配理由：${generatedPartner.reasons.join('、')}`,
+    '先互讲薄弱知识点',
+    '再用错题检查理解是否到位'
+  ]
+};
 
 @Entry
 @Component
@@ -86,6 +111,8 @@ struct StudyPlan {
             .fontColor('#667085')
             .lineHeight(24)
             .width('100%')
+
+          this.CardView(servicePlanCard)
 
           ForEach(pageData.cards, (card: DemoCard) => {
             this.CardView(card)

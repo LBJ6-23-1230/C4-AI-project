@@ -1,7 +1,27 @@
 import router from '@ohos.router';
+import { mockCandidates, mockCourse, mockCurrentUser } from '../data/MockData';
 import { learningFlowPages, DemoCard, DemoPage } from '../models/LearningFlowData';
+import { PartnerMatch, StudySuggestion } from '../models/AgentModels';
+import { LocalAgentService } from '../services/LocalAgentService';
 
 const pageData: DemoPage = learningFlowPages[0];
+const generatedSuggestion: StudySuggestion =
+  LocalAgentService.generateStudySuggestions(mockCurrentUser, mockCourse);
+const generatedPartner: PartnerMatch | null =
+  LocalAgentService.matchBestPartner(mockCurrentUser, mockCandidates);
+const partnerSummary: string = generatedPartner === null ?
+  '暂时没有找到合适的学习搭档' :
+  `推荐搭子：${generatedPartner.matchName}，匹配分数 ${generatedPartner.score}`;
+const localServiceCard: DemoCard = {
+  title: '本地服务推荐',
+  description: `${generatedSuggestion.course}：${generatedSuggestion.task}`,
+  badge: generatedSuggestion.priority,
+  bullets: [
+    generatedSuggestion.reason,
+    `建议时长：${generatedSuggestion.duration}`,
+    partnerSummary
+  ]
+};
 
 @Entry
 @Component
@@ -90,6 +110,8 @@ struct Index {
             .fontColor('#667085')
             .lineHeight(24)
             .width('100%')
+
+          this.CardView(localServiceCard)
 
           ForEach(pageData.cards, (card: DemoCard) => {
             this.CardView(card)

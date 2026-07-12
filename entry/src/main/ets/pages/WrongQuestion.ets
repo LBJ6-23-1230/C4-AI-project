@@ -1,7 +1,22 @@
 import router from '@ohos.router';
+import { mockWrongQuestion } from '../data/MockData';
 import { learningFlowPages, DemoCard, DemoPage } from '../models/LearningFlowData';
+import { WrongAnalysisResult } from '../models/AgentModels';
+import { LocalAgentService } from '../services/LocalAgentService';
 
 const pageData: DemoPage = learningFlowPages[2];
+const wrongAnalysis: WrongAnalysisResult =
+  LocalAgentService.analyzeWrongQuestion(mockWrongQuestion.input.image);
+const wrongAnalysisCard: DemoCard = {
+  title: `服务分析：${wrongAnalysis.wrongType}`,
+  description: wrongAnalysis.reason,
+  badge: wrongAnalysis.course,
+  bullets: [
+    `知识点：${wrongAnalysis.knowledge.join('、')}`,
+    `标签：${wrongAnalysis.tags.join('、')}`,
+    `建议：${wrongAnalysis.suggestions.join('；')}`
+  ]
+};
 
 @Entry
 @Component
@@ -104,6 +119,8 @@ struct WrongQuestion {
             .fontColor('#667085')
             .lineHeight(24)
             .width('100%')
+
+          this.CardView(wrongAnalysisCard)
 
           ForEach(pageData.cards, (card: DemoCard) => {
             this.CardView(card)

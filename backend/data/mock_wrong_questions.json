@@ -1,0 +1,27 @@
+{
+    "questionId": "q001",
+    "userId": "u001",
+    "input": {
+        "image": "img001",
+        "myAnswer": "A",
+        "correctAnswer": "C"
+    },
+    "AIAnalysis": {
+        "course": "数据结构",
+        "knowledge": [
+            {
+                "name": "二叉树遍历",
+                "confidence": 0.92
+            }
+        ],
+        "wrongType": "概念混淆",
+        "reason": "未理解中序遍历访问顺序",
+        "Tag": [
+            "二叉树薄弱"
+        ],
+        "suggestion":[{
+            "studyTag": "二叉树遍历",
+            "task": "复习二叉树的前序、中序、后序遍历方法，理解每种遍历的访问顺序和应用场景。"
+        }]
+    }
+}

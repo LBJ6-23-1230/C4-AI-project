@@ -1,7 +1,22 @@
 import router from '@ohos.router';
+import { mockCourse, mockCurrentUser } from '../data/MockData';
 import { learningFlowPages, DemoCard, DemoPage } from '../models/LearningFlowData';
+import { StudySuggestion as GeneratedStudySuggestion } from '../models/AgentModels';
+import { LocalAgentService } from '../services/LocalAgentService';
 
 const pageData: DemoPage = learningFlowPages[1];
+const generatedSuggestion: GeneratedStudySuggestion =
+  LocalAgentService.generateStudySuggestions(mockCurrentUser, mockCourse);
+const generatedSuggestionCard: DemoCard = {
+  title: `推荐任务：${generatedSuggestion.task}`,
+  description: generatedSuggestion.reason,
+  badge: generatedSuggestion.priority,
+  bullets: [
+    `课程：${generatedSuggestion.course}`,
+    `建议时长：${generatedSuggestion.duration}`,
+    `考试倒计时：${mockCourse.exam.daysLeft} 天`
+  ]
+};
 
 @Entry
 @Component
@@ -85,6 +100,8 @@ struct StudySuggestion {
             .fontColor('#667085')
             .lineHeight(24)
             .width('100%')
+
+          this.CardView(generatedSuggestionCard)
 
           ForEach(pageData.cards, (card: DemoCard) => {
             this.CardView(card)
