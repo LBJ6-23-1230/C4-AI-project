@@ -2,7 +2,7 @@
     "questionId": "q001",
     "userId": "u001",
     "input": {
-        "image": "img001.png",
+        "image": "img001",
         "myAnswer": "A",
         "correctAnswer": "C"
     },
