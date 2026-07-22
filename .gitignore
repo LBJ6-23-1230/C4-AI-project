@@ -19,3 +19,4 @@
 backend/.env
 backend/history.json
 *.env
+/.arkui-x
