@@ -4,6 +4,7 @@ import { FocusTask, LearningPlanTask, WeeklyLearningPlan } from '../models/Agent
 import { LocalAgentService } from '../services/LocalAgentService';
 import { DateHelper, WeekDay } from '../utils/DateHelper';
 import { ChatNavigation } from '../services/ChatNavigation';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -158,6 +159,7 @@ struct StudyPlan {
   }
 
   build() {
+    Stack() {
     Column() {
       // 顶部导航
       Row() {
@@ -254,6 +256,8 @@ struct StudyPlan {
         }.width('100%').padding(20)
       }.layoutWeight(1)
     }.width('100%').height('100%').backgroundColor('#F7F8FA')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 
   @Builder

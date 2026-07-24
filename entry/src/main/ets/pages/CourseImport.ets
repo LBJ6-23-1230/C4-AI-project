@@ -6,6 +6,7 @@ import { appState } from '../data/AppState';
 import { CourseInfo, HomeworkDDL } from '../models/AgentModels';
 import { FileParserService } from '../services/FileParserService';
 import { LocalAgentService } from '../services/LocalAgentService';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -405,6 +406,7 @@ struct CourseImport {
   /* ==================== 主构建 ==================== */
 
   build() {
+    Stack() {
     Column() {
       // 顶部导航
       Row() {
@@ -535,5 +537,7 @@ struct CourseImport {
       .width('100%')
     }
     .width('100%').height('100%').backgroundColor('#FFFFFF')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 }

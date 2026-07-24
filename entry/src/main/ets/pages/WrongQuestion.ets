@@ -4,6 +4,7 @@ import { appState } from '../data/AppState';
 import { WrongAnalysisResult } from '../models/AgentModels';
 import { LocalAgentService } from '../services/LocalAgentService';
 import { ChatNavigation } from '../services/ChatNavigation';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -221,6 +222,7 @@ Text('→').fontSize(16).fontColor('#2563EB')
   }
 
   build() {
+    Stack() {
     Column() {
       Row() {
         Text('← 返回').fontSize(14).fontColor('#64748B').fontWeight(FontWeight.Medium)
@@ -342,5 +344,7 @@ Text('→').fontSize(16).fontColor('#2563EB')
       .layoutWeight(1)
     }
     .width('100%').height('100%').backgroundColor('#F5F7FA')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 }

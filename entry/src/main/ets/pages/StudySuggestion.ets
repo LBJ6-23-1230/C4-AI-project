@@ -3,6 +3,7 @@ import { appState } from '../data/AppState';
 import { StudySuggestion as StudySuggestionType, CourseInfo, TaskPriority, FocusTask } from '../models/AgentModels';
 import { LocalAgentService } from '../services/LocalAgentService';
 import { ChatNavigation } from '../services/ChatNavigation';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 const highPriorityCourse: CourseInfo = appState.getHighPriorityCourse();
 const generatedSuggestion: StudySuggestionType =
@@ -26,6 +27,7 @@ struct StudySuggestion {
   }
 
   build() {
+    Stack() {
     Column() {
       Row() {
         Text('← 返回').fontSize(14).fontColor('#64748B').fontWeight(FontWeight.Medium)
@@ -144,5 +146,7 @@ Text(`${appState.courses.length}门课程 · ${appState.homeworkDDLs.length}项�
       .layoutWeight(1)
     }
     .width('100%').height('100%').backgroundColor('#F5F7FA')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 }

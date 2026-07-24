@@ -1,6 +1,7 @@
 import router from '@ohos.router';
 import { appState } from '../data/AppState';
 import { LearningPlanTask } from '../models/AgentModels';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -25,6 +26,7 @@ struct ReviewSummary {
   private focusCompletionRate(): number { return appState.getFocusSummary().completionRate; }
 
   build() {
+    Stack() {
     Column() {
       Row() {
         Text('← 返回').fontSize(14).fontColor('#64748B').onClick(() => router.back())
@@ -97,6 +99,8 @@ struct ReviewSummary {
         }.width('100%').padding(20)
       }.layoutWeight(1)
     }.width('100%').height('100%').backgroundColor('#F7F8FA')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 
   @Builder

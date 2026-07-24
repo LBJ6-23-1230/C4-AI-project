@@ -1,6 +1,7 @@
 import router from '@ohos.router';
 import { appState } from '../data/AppState';
 import { FocusSession, FocusSessionStatus, FocusTask } from '../models/AgentModels';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -324,6 +325,7 @@ struct FocusTimer {
         .width('100%').height('100%').justifyContent(FlexAlign.Center)
         .backgroundColor('#40000000')
       }
+    AIFloatButton()
     }
     .width('100%').height('100%').backgroundColor(this.isStrict() ? '#F5F7FA' : '#FFFFFF')
   }

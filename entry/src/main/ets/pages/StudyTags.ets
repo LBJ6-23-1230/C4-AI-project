@@ -2,6 +2,7 @@ import router from '@ohos.router';
 import { appState } from '../data/AppState';
 import { RadarChart } from '../components/RadarChart';
 import { ChatNavigation } from '../services/ChatNavigation';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -58,6 +59,7 @@ struct StudyTags {
   }
 
   build() {
+    Stack() {
     Column() {
       // 顶部导航
       Row() {
@@ -80,7 +82,7 @@ struct StudyTags {
             Text('知识薄弱点雷达图')
               .fontSize(16).fontWeight(FontWeight.Bold).fontColor('#111827')
             Text('绿线 = 你的水平 · 灰虚线 = 目标水平 · 红色标记 = 薄弱维度')
-              .fontSize(12).fontColor('#6B7280')
+              .fontSize(13).fontColor('#6B7280')
             RadarChart({
               dimensions: this.chartDims,
               current: this.chartCurrent,
@@ -95,16 +97,16 @@ struct StudyTags {
           // 图例
           Row({ space: 20 }) {
             Row({ space: 4 }) {
-              Text('●').fontSize(12).fontColor('#EF4444')
-              Text('薄弱点').fontSize(12).fontColor('#6B7280')
+              Text('●').fontSize(14).fontColor('#EF4444')
+              Text('薄弱点').fontSize(13).fontColor('#6B7280')
             }
             Row({ space: 4 }) {
-              Text('●').fontSize(12).fontColor('#2563EB')
-              Text('已掌握').fontSize(12).fontColor('#6B7280')
+              Text('●').fontSize(14).fontColor('#2563EB')
+              Text('已掌握').fontSize(13).fontColor('#6B7280')
             }
             Row({ space: 4 }) {
-              Text('●').fontSize(12).fontColor('#3B82F6')
-              Text('进行中').fontSize(12).fontColor('#6B7280')
+              Text('●').fontSize(14).fontColor('#3B82F6')
+              Text('进行中').fontSize(13).fontColor('#6B7280')
             }
           }
           .width('100%').justifyContent(FlexAlign.Center)
@@ -169,5 +171,7 @@ Text(index === 0 ? '严重' : '一般')
       .layoutWeight(1).backgroundColor('#F3F6FA')
     }
     .width('100%').height('100%')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 }

@@ -3,6 +3,7 @@ import { appState } from '../data/AppState';
 import { PartnerMatch as PartnerMatchType, MatchFactor, UserProfile } from '../models/AgentModels';
 import { LocalAgentService } from '../services/LocalAgentService';
 import { ChatNavigation } from '../services/ChatNavigation';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 const generatedPartner: PartnerMatchType | null =
   LocalAgentService.matchBestPartner(appState.currentUser, appState.candidates);
@@ -80,6 +81,7 @@ Text(`${generatedPartner.score}%`).fontSize(28).fontWeight(FontWeight.Bold).font
   }
 
   build() {
+    Stack() {
     Column() {
       Row() {
         Text('← 返回').fontSize(14).fontColor('#64748B').fontWeight(FontWeight.Medium)
@@ -229,5 +231,7 @@ Column() {
       .layoutWeight(1)
     }
     .width('100%').height('100%').backgroundColor('#EFF6FF')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 }

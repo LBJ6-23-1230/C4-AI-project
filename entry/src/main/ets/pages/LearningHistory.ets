@@ -1,11 +1,13 @@
 import router from '@ohos.router';
 import { appState } from '../data/AppState';
 import { FocusSession, FocusSummary } from '../models/AgentModels';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
 struct LearningHistory {
   build() {
+    Stack() {
     Column() {
       Row() { Text('返回').fontSize(14).fontColor('#2563EB').onClick(() => router.back()); Blank(); Text('我的记录').fontSize(14).fontWeight(FontWeight.Medium).fontColor('#2563EB') }
         .width('100%').padding(20).backgroundColor('#FFFFFF')
@@ -33,6 +35,8 @@ struct LearningHistory {
         }.width('100%').padding(20)
       }.layoutWeight(1)
     }.width('100%').height('100%').backgroundColor('#FFFFFF')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 
   @Builder

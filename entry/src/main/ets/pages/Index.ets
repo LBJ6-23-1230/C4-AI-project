@@ -4,6 +4,7 @@ import { FocusTask, LearningPlanTask, WeeklyLearningPlan } from '../models/Agent
 import { LocalAgentService } from '../services/LocalAgentService';
 import { DateHelper } from '../utils/DateHelper';
 import { ChatNavigation } from '../services/ChatNavigation';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -136,6 +137,7 @@ struct Index {
   }
 
   build() {
+    Stack() {
     Column() {
       Row() {
         Column({ space: 3 }) {
@@ -202,6 +204,8 @@ struct Index {
       .width('100%').padding({ left: 12, right: 12, top: 8, bottom: 10 })
       .backgroundColor('#FFFFFF').border({ width: { top: 1 }, color: '#EAECF0' })
     }.width('100%').height('100%').backgroundColor('#F7F8FA')
+    AIFloatButton()
+  }.width('100%').height('100%')
   }
 
   @Builder

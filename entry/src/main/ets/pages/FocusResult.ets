@@ -2,6 +2,7 @@ import router from '@ohos.router';
 import { appState } from '../data/AppState';
 import { AgentFeedback, FocusSelfAssessment, FocusSession, FocusTask } from '../models/AgentModels';
 import { LocalAgentService } from '../services/LocalAgentService';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -62,6 +63,7 @@ struct FocusResult {
   }
 
   build() {
+    Stack() {
     Column() {
       Row() { Text('专注结果').fontSize(16).fontWeight(FontWeight.Medium).fontColor('#2563EB'); Blank(); Text('完成后已记录').fontSize(12).fontColor('#6B7FA0') }
         .width('100%').padding(20).backgroundColor('#FFFFFF')
@@ -100,6 +102,8 @@ struct FocusResult {
         }.width('100%').padding(20)
       }.layoutWeight(1)
     }.width('100%').height('100%').backgroundColor('#FFFFFF')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 
   private assessmentLabel(value: string): string {

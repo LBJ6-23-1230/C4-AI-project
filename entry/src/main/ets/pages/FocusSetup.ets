@@ -1,6 +1,7 @@
 import router from '@ohos.router';
 import { appState } from '../data/AppState';
 import { FocusMode, FocusSource, FocusTask, FocusTimerType } from '../models/AgentModels';
+import { AIFloatButton } from '../components/AIFloatButton';
 
 @Entry
 @Component
@@ -124,6 +125,7 @@ struct FocusSetup {
   }
 
   build() {
+    Stack() {
     Column() {
       Row() {
         Text('← 返回首页').fontSize(14).fontColor('#2563EB').fontWeight(FontWeight.Medium)
@@ -212,6 +214,8 @@ struct FocusSetup {
         }.width('100%').padding(20)
       }.layoutWeight(1)
     }.width('100%').height('100%').backgroundColor('#FFFFFF')
+    AIFloatButton()
+    }.width('100%').height('100%')
   }
 
   @Builder

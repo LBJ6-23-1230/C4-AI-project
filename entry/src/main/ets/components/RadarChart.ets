@@ -24,8 +24,8 @@ export struct RadarChart {
   @Prop target: number[] = [];
   @Prop weakIndices: number[] = [];
   @Prop strengthIndices: number[] = [];
-  @State canvasWidth: number = 280;
-  @State canvasHeight: number = 280;
+  @State canvasWidth: number = 420;
+  @State canvasHeight: number = 420;
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private ctx: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
 
@@ -40,7 +40,7 @@ export struct RadarChart {
     const ctx: CanvasRenderingContext2D = this.ctx;
     const cx: number = this.canvasWidth / 2;
     const cy: number = this.canvasHeight / 2;
-    const radius: number = Math.min(cx, cy) * 0.33;
+    const radius: number = Math.min(cx, cy) * 0.30;
     const dims: string[] = this.dimensions;
     const n: number = dims.length > 0 ? dims.length : 5;
     const levels: number = 5;
@@ -112,13 +112,13 @@ export struct RadarChart {
     }
 
     // 5. 标注 + 标记点
-    ctx.font = '12px sans-serif';
+    ctx.font = '40px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
     for (let i: number = 0; i < n; i++) {
       const angle: number = (Math.PI * 2 / n) * i - Math.PI / 2;
-      const labelR: number = radius + 36;
+      const labelR: number = radius + 68;
       const labelX: number = cx + labelR * Math.cos(angle);
       const labelY: number = cy + labelR * Math.sin(angle);
 
@@ -145,7 +145,12 @@ export struct RadarChart {
       } else if (this.isStrength(i)) {
         ctx.beginPath();
         ctx.arc(pointX, pointY, 5, 0, Math.PI * 2);
-        ctx.fillStyle = '#10B981';
+        ctx.fillStyle = '#2563EB';
+        ctx.fill();
+      } else {
+        ctx.beginPath();
+        ctx.arc(pointX, pointY, 5, 0, Math.PI * 2);
+        ctx.fillStyle = '#3B82F6';
         ctx.fill();
       }
     }
